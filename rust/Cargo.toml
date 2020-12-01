@@ -1,0 +1,8 @@
+[package]
+name = "aoc_2020"
+version = "0.1.0"
+authors = ["JothCoder <41806047+JothCoder@users.noreply.github.com>"]
+edition = "2018"
+
+[lib]
+name = "aoc"
