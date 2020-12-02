@@ -10,28 +10,19 @@ def main():
 
 
 def part1(numbers):
-    for i in range(len(numbers)-1):
-        a = numbers[i]
-        for j in range(len(numbers)-1):
-            if i == j:
-                continue
-            b = numbers[j]
-            if a + b == 2020:
+    for (i, a) in enumerate(numbers):
+        for (j, b) in enumerate(numbers):
+            if i != j and a + b == 2020:
                 return a*b
 
 
 def part2(numbers):
-    for i in range(len(numbers)-1):
-        a = numbers[i]
-        for j in range(len(numbers)-1):
+    for (i, a) in enumerate(numbers):
+        for (j, b) in enumerate(numbers):
             if i == j:
                 continue
-            b = numbers[j]
-            for k in range(len(numbers)-1):
-                if j == k or i == k:
-                    continue
-                c = numbers[k]
-                if a + b + c == 2020:
+            for (k, c) in enumerate(numbers):
+                if j != k and i != k and a + b + c == 2020:
                     return a*b*c
 
 
