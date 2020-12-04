@@ -11,25 +11,17 @@ def main():
 
 def parse_input(raw_input):
     policy, password = raw_input.split(':')
-    ns, char = policy.split()
-    n1, n2 = ns.split('-')
-    return (int(n1), int(n2), char, password.strip())
+    vals, char = policy.split()
+    left, right = vals.split('-')
+    return (int(left), int(right), char, password.strip())
 
 
-def part1(input):
-    valids = 0
-    for (n1, n2, char, password) in input:
-        if n1 <= password.count(char) <= n2:
-            valids += 1
-    return valids
+def part1(input_):
+    return sum(n <= pwd.count(c) <= m for (n, m, c, pwd) in input_)
 
 
-def part2(input):
-    valids = 0
-    for (n1, n2, char, password) in input:
-        if (password[n1-1] == char) ^ (password[n2-1] == char):
-            valids += 1
-    return valids
+def part2(input_):
+    return sum((pwd[i-1] == c) ^ (pwd[j-1] == c) for (i, j, c, pwd) in input_)
 
 
 main()
