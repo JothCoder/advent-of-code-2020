@@ -20,19 +20,27 @@ def part1(data):
 
 
 def part2(data, weakness):
-    for i in range(len(data)):
-        for j in range(i+1, len(data)):
-            data_range = data[i:j+1]
-            if sum(data_range) == weakness:
-                return min(data_range) + max(data_range)
+    i = 0
+    while i < len(data):
+        sum_ = data[i]
+        j = i + 1
+        while sum_ < weakness:
+            sum_ += data[j]
+            if sum_ == weakness:
+                return min(data[i:j+1]) + max(data[i:j+1])
+            j += 1
+        sum_ -= data[i]
+        i += 1
     return None
 
 
 def is_invalid_xmas(num, prev_nums):
     for i, x in enumerate(prev_nums):
-        for j, y in enumerate(prev_nums):
-            if i != j and x + y == num:
+        try:
+            if prev_nums.index(num - x) != i:
                 return False
+        except ValueError:
+            pass
     return True
 
 
